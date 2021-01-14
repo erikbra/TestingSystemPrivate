@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="System.Private.ServiceModel" Version="4.8.0" />
+    <!-- Without this "hack", It will not compile -->
+    <Reference Include="$(NuGetPackageRoot)/system.private.servicemodel/**/system.private.servicemodel.dll" />
+
+    <!-- But, if I add more nuget packages in the same areas, there are problems with types found in more than one dll -->
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.0" />
+  </ItemGroup>
+
+</Project>
